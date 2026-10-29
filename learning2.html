@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IXT | หน้าแรก</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background-color: #1e293b;
+            border-bottom: 2px solid #38bdf8;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+        .logo span {
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 400;
+            display: block;
+        }
+        .nav-btn-back {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            background-color: rgba(56, 189, 248, 0.1);
+            transition: all 0.3s ease;
+        }
+        .nav-btn-back:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+        .main-content {
+            max-width: 900px;
+            margin: 5rem auto;
+            background: #0b1329;
+            padding: 4rem 3.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #38bdf8, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+        }
+        p {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        .highlight {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+        .btn-next {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: #ffffff;
+            background: linear-gradient(135deg, #38bdf8, #a855f7);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+            background: linear-gradient(135deg, #0ea5e9, #9333ea);
+        }
+        .btn-next:active {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            IXT <span>I excel in Technology</span>
+        </div>
+        <div>
+            <a href="index.html" class="nav-btn-back">กลับหน้าหลัก</a>
+        </div>
+    </nav>
+    <div class="main-content">
+        <h1>ซอฟต์แวร์ (Software) คืออะไร?</h1>
+        <p>เกม โปรแกรม หรือแอปพลิเคชั่นบนมือถือ ต่างก็เป็น <span class="highlight">ซอฟต์แวร์</span> ชนิดนึงที่เข้ามามีบทบาทสำคัญอย่างมากกับผู้ใช้งาน (User) ทุกคนในชีวิตประจำวัน ด้วยการตอบสนองความต้องการไม่ว่าจะเป็นการสร้างความบันเทิงหรือแก้ไขปัญหาต่าง ๆ</p>
+        
+        <a href="next-page.html" class="btn-next">อ่านตอนต่อไป &rarr;</a>
+    </div>
+</body>
+</html>

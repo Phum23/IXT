@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IXT | IT Typing Speed Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background-color: #1e293b;
+            border-bottom: 2px solid #38bdf8;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+        .logo span {
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 400;
+            display: block;
+        }
+        .nav-btn-back {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            background-color: rgba(56, 189, 248, 0.1);
+            transition: all 0.3s ease;
+        }
+        .nav-btn-back:hover {
+            background-color: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+        .main-content {
+            max-width: 800px;
+            margin: 3rem auto;
+            width: 90%;
+            background: #0b1329;
+            padding: 3.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #38bdf8, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            background: #1e293b;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .stat-box {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+        }
+        .stat-box span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .text-display {
+            background: #020617;
+            padding: 2rem;
+            font-size: 1.5rem;
+            text-align: left;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+        .typing-textarea {
+            width: 100%;
+            height: 100px;
+            background: #1e293b;
+            border: 2px solid rgba(56, 189, 248, 0.4);
+            border-radius: 8px;
+            color: #ffffff;
+            padding: 1rem;
+            font-size: 1.3rem;
+            resize: none;
+            outline: none;
+            margin-bottom: 1.5rem;
+        }
+        .typing-textarea:focus {
+            border-color: #38bdf8;
+        }
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .btn-start {
+            background: #64748b;
+            color: #ffffff;
+        }
+        .btn-submit {
+            background: linear-gradient(to right, #38bdf8, #a855f7);
+            color: #0f172a;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            IXT
+            <span>I excel in Technology</span>
+        </div>
+        <div>
+            <a href="index.html" class="nav-btn-back">กลับหน้าหลัก</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <h1>IT Typing Challenge</h1>
+        
+        <div class="stats-container">
+            <div class="stat-box">Time Left: <span id="timer">60</span>s</div>
+            <div class="stat-box">Score (Correct Words): <span id="score">0</span></div>
+        </div>
+
+        <!-- กล่องโจทย์ข้อความ -->
+        <div class="text-display" id="text-container">Press "Start Game" to begin.</div>
+
+        <!-- กล่องพิมพ์ข้อความ -->
+        <textarea class="typing-textarea" id="typing-input" placeholder="Type the text here..." disabled></textarea>
+
+        <div class="btn-container">
+            <button class="btn btn-start" id="start-btn">Start Game</button>
+            <button class="btn btn-submit" id="submit-btn" disabled>Submit & Next</button>
+        </div>
+    </div>
+
+    <script>
+        const itParagraphs = [
+            "Software",
+            "systems",
+            "machines",
+            "networks",
+            "database"
+        ];
+
+        const textContainer = document.getElementById('text-container');
+        const typingInput = document.getElementById('typing-input');
+        const startBtn = document.getElementById('start-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const timerDisplay = document.getElementById('timer');
+        const scoreDisplay = document.getElementById('score');
+
+        let timer = 60;
+        let timerInterval = null;
+        let score = 0;
+        let currentParagraph = "";
+
+        function loadParagraph() {
+            const randomIndex = Math.floor(Math.random() * itParagraphs.length);
+            currentParagraph = itParagraphs[randomIndex];
+            textContainer.innerText = currentParagraph;
+            typingInput.value = "";
+            typingInput.focus();
+        }
+
+        function startGame() {
+            score = 0;
+            timer = 60;
+            scoreDisplay.innerText = score;
+            timerDisplay.innerText = timer;
+            
+            typingInput.disabled = false;
+            submitBtn.disabled = false;
+            startBtn.innerText = "Restart Game";
+            
+            loadParagraph();
+            
+            clearInterval(timerInterval);
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function submitAnswer() {
+            let typedText = typingInput.value.trim();
+            let targetText = currentParagraph.trim();
+
+            // แยกตรวจคำที่พิมพ์ถูก (แปลงเป็น Array เพื่อเช็คคำต่อคำ)
+            let typedWords = typedText.split(/\s+/);
+            let targetWords = targetText.split(/\s+/);
+            
+            let correctWordsInRound = 0;
+            typedWords.forEach((word, index) => {
+                if (targetWords[index] && word === targetWords[index]) {
+                    correctWordsInRound++;
+                }
+            });
+
+            // เพิ่มคะแนนตามจำนวนคำที่พิมพ์ถูกต้องในรอบนั้น
+            score += correctWordsInRound;
+            scoreDisplay.innerText = score;
+
+            // โหลดโจทย์ใหม่ทันที
+            loadParagraph();
+        }
+
+        function updateTimer() {
+            if (timer > 0) {
+                timer--;
+                timerDisplay.innerText = timer;
+            } else {
+                clearInterval(timerInterval);
+                typingInput.disabled = true;
+                submitBtn.disabled = true;
+                textContainer.innerText = "Game Over!";
+                alert(`Game Over! Your total score is ${score} correct words.`);
+            }
+        }
+
+        // ฟังชันก์เมื่อกดปุ่ม Enter ใน Textarea ให้กดส่งได้เช่นกัน
+        typingInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // ป้องกันการขึ้นบรรทัดใหม่
+                if (!submitBtn.disabled) {
+                    submitAnswer();
+                }
+            }
+        });
+
+        startBtn.addEventListener('click', startGame);
+        submitBtn.addEventListener('click', submitAnswer);
+    </script>
+</body>
+</html>
